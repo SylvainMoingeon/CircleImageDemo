@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="CircleImageDemo.MainPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:circleimage="clr-namespace:CircleImageDemo.CircleImage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:vm="clr-namespace:CircleImageDemo"
+             xmlns:models="clr-namespace:CircleImageDemo.Models"
+             xmlns:converters="clr-namespace:CircleImageDemo.Converters"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="WhiteSmoke"
+             mc:Ignorable="d"
+             >
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <converters:DebugConverter x:Key="DebugConverter" />
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Margin="0,20,0,0"
+                   Text="My lovely contactbook"
+                   TextColor="Teal"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   />
+
+            <Label Margin="10"
+                   Text="{Binding BookmarkedCount, StringFormat='Vous avez {0} contacts en favoris'}"
+                   TextColor="Teal"
+                   />
+
+            <CollectionView ItemsSource="{Binding Contacts}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type models:Contact}">
+                        <Grid Padding="10,3">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                      Command="{Binding SwitchBookmarkCommand, Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Converter={StaticResource DebugConverter}}"
+                                                      CommandParameter="{Binding Converter={StaticResource DebugConverter}}"
+                                                      />
+                            </Grid.GestureRecognizers>
+
+                            <Frame Padding="10,5"
+                                   CornerRadius="5"
+                                   IsClippedToBounds="True"
+                                   BackgroundColor="Teal"
+                                   >
+
+                                <Grid ColumnSpacing="10"
+                                      RowSpacing="0"
+                                      ColumnDefinitions="64,*"
+                                      RowDefinitions="32,32"
+                                      >
+                                    <circleimage:CircleImage Grid.RowSpan="3"
+                                                             Grid.Column="0"
+                                                             ImageSize="64"
+                                                             MainImageSource="{Binding PhotoUrl}"
+                                                             PlaceholderImageSource="{Binding PlaceholderImage, Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={Type vm:MainViewModel}}}"
+                                                             BorderColor="YellowGreen"
+                                                             BorderThickness="4"
+                                                             ShowBorder="{Binding IsBookmarked}"
+                                                             InputTransparent="True"
+                                                             ShowLoader="True"
+                                                             />
+
+                                    <Label Grid.Row="0"
+                                           Grid.Column="1"
+                                           Text="{Binding Name}"
+                                           TextColor="White"
+                                           TextTransform="Uppercase"
+                                           FontSize="Large"
+                                           VerticalOptions="End"
+                                           />
+
+                                    <Label Grid.Row="1"
+                                           Grid.Column="1"
+                                           Text="{Binding Email}"
+                                           TextColor="White"
+                                           VerticalOptions="Center"
+                                           />
+
+                                    <Label Grid.Row="2"
+                                           Grid.Column="1"
+                                           Text="{Binding Comment}"
+                                           TextColor="White"
+                                           FontSize="Micro"
+                                           LineBreakMode="WordWrap"
+                                           />
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
