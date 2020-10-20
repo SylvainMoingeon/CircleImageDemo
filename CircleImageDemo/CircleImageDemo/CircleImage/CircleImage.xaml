@@ -20,14 +20,16 @@
     <Image x:Name="Placeholder"
            Aspect="AspectFit"
            HorizontalOptions="Center"
-           Source="{Binding PlaceholderImageSource, Source={x:Reference this}}"
-           HeightRequest="{Binding ImageSize, Source={x:Reference this}}"
-           WidthRequest="{Binding ImageSize, Source={x:Reference this}}"
+           BindingContext="{x:Reference this}"
+           Source="{Binding PlaceholderImageSource}"
+           HeightRequest="{Binding ImageSize}"
+           WidthRequest="{Binding ImageSize}"
            >
         <Image.Clip>
-            <EllipseGeometry RadiusX="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}, Source={x:Reference this}}"
-                             RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}, Source={x:Reference this}}"
-                             Center="{Binding ImageSize, Converter={StaticResource ImageSizeToCenterConverter}, Source={x:Reference this}}"
+            <EllipseGeometry BindingContext="{x:Reference this}"
+                             RadiusX="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
+                             RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
+                             Center="{Binding ImageSize, Converter={StaticResource ImageSizeToCenterConverter}}"
                              />
         </Image.Clip>
     </Image>
@@ -36,33 +38,37 @@
            Aspect="AspectFit"
            BackgroundColor="Transparent"
            HorizontalOptions="Center"
-           Source="{Binding MainImageSource, Source={x:Reference this}}"
-           HeightRequest="{Binding ImageSize, Source={x:Reference this}}"
-           WidthRequest="{Binding ImageSize, Source={x:Reference this}}"
+           BindingContext="{x:Reference this}"
+           Source="{Binding MainImageSource}"
+           HeightRequest="{Binding ImageSize}"
+           WidthRequest="{Binding ImageSize}"
            >
         <Image.Clip>
-            <EllipseGeometry RadiusX="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}, Source={x:Reference this}}"
-                             RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}, Source={x:Reference this}}"
-                             Center="{Binding ImageSize, Converter={StaticResource ImageSizeToCenterConverter}, Source={x:Reference this}}"
+            <EllipseGeometry BindingContext="{x:Reference this}"
+                             RadiusX="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
+                             RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
+                             Center="{Binding ImageSize, Converter={StaticResource ImageSizeToCenterConverter}}"
                              />
         </Image.Clip>
     </Image>
 
     <Ellipse x:Name="Border"
              Margin="0"
+             BindingContext="{x:Reference this}"
              HorizontalOptions="Center"
-             Stroke="{Binding BorderColor, Converter={StaticResource ColorToBrushConverter}, Source={x:Reference this}}"
-             StrokeThickness="{Binding BorderThickness, Source={x:Reference this}}"
+             Stroke="{Binding BorderColor, Converter={StaticResource ColorToBrushConverter}}"
+             StrokeThickness="{Binding BorderThickness}"
              VerticalOptions="Center"
-             HeightRequest="{Binding ImageSize, Source={x:Reference this}}"
-             WidthRequest="{Binding ImageSize, Source={x:Reference this}}"
-             IsVisible="{Binding ShowBorder, Source={x:Reference this}}"
+             HeightRequest="{Binding ImageSize}"
+             WidthRequest="{Binding ImageSize}"
+             IsVisible="{Binding ShowBorder}"
              />
 
     <ActivityIndicator IsRunning="{Binding Source={x:Reference Image}, Path=IsLoading}"
-                       IsVisible="{Binding Source={x:Reference this}, Path=ShowLoader}"
+                       BindingContext="{x:Reference this}"
+                       IsVisible="{Binding ShowLoader}"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"
-                       Color="{Binding Source={x:Reference this}, Path=BorderColor}"
+                       Color="{Binding BorderColor}"
                        />
 </Grid>
