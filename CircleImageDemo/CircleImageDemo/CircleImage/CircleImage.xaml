@@ -4,8 +4,6 @@
       xmlns="http://xamarin.com/schemas/2014/forms"
       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
       xmlns:local="clr-namespace:CircleImageDemo.CircleImage"
-      HeightRequest="{Binding ImageSize, Source={x:Reference this}}"
-      WidthRequest="{Binding ImageSize, Source={x:Reference this}}"
       HorizontalOptions="Center"
       VerticalOptions="Center"
       >
@@ -36,7 +34,6 @@
 
     <Image x:Name="Image"
            Aspect="AspectFit"
-           BackgroundColor="Transparent"
            HorizontalOptions="Center"
            BindingContext="{x:Reference this}"
            Source="{Binding MainImageSource}"
