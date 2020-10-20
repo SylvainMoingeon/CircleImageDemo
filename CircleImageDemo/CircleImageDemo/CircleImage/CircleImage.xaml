@@ -13,7 +13,7 @@
     <Grid.Resources>
         <local:ColorToBrushConverter x:Key="ColorToBrushConverter" />
         <local:DoubleDividerConverter x:Key="DoubleDividerConverter" Divider="2" />
-
+        <local:ImageSizeToCenterConverter x:Key="ImageSizeToCenterConverter" />
 
     </Grid.Resources>
 
@@ -25,7 +25,10 @@
            WidthRequest="{Binding ImageSize, Source={x:Reference this}}"
            >
         <Image.Clip>
-            <EllipseGeometry RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}, Source={x:Reference this}}" />
+            <EllipseGeometry RadiusX="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}, Source={x:Reference this}}"
+                             RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}, Source={x:Reference this}}"
+                             Center="{Binding ImageSize, Converter={StaticResource ImageSizeToCenterConverter}, Source={x:Reference this}}"
+                             />
         </Image.Clip>
     </Image>
 
@@ -36,7 +39,14 @@
            Source="{Binding MainImageSource, Source={x:Reference this}}"
            HeightRequest="{Binding ImageSize, Source={x:Reference this}}"
            WidthRequest="{Binding ImageSize, Source={x:Reference this}}"
-           />
+           >
+        <Image.Clip>
+            <EllipseGeometry RadiusX="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}, Source={x:Reference this}}"
+                             RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}, Source={x:Reference this}}"
+                             Center="{Binding ImageSize, Converter={StaticResource ImageSizeToCenterConverter}, Source={x:Reference this}}"
+                             />
+        </Image.Clip>
+    </Image>
 
     <Ellipse x:Name="Border"
              Margin="0"

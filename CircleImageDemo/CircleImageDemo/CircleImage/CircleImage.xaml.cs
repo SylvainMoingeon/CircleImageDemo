@@ -64,24 +64,7 @@ namespace CircleImageDemo.CircleImage
              defaultValue: 0.0,
              defaultBindingMode: BindingMode.OneWay,
              propertyChanged: (bindable, oldValue, newValue) =>
-             {
-                 if (newValue is double imageSize && bindable is CircleImage circleImage)
-                 {
-                     double radius = imageSize / 2;
-
-                     // Clipping
-                     Point center = new Point(radius, radius);
-                     EllipseGeometry ellipseGeometry = new EllipseGeometry()
-                     {
-                         Center = center,
-                         RadiusX = radius,
-                         RadiusY = radius
-                     };
-
-                     circleImage.Image.Clip = ellipseGeometry;
-                     circleImage.Placeholder.Clip = ellipseGeometry;
-                 }
-             });
+             { });
 
         // Gets or sets value of this BindableProperty
         public double ImageSize
