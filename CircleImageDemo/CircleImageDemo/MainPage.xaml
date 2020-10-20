@@ -10,7 +10,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              ios:Page.UseSafeArea="True"
-             BackgroundColor="WhiteSmoke"
+             BackgroundColor="{StaticResource BackgroundColor}"
              mc:Ignorable="d"
              >
 
@@ -26,7 +26,7 @@
         <StackLayout>
             <Label Margin="0,20,0,0"
                    Text="My lovely contactbook"
-                   TextColor="Teal"
+                   TextColor="{StaticResource PrimaryColor}"
                    FontSize="Title"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
@@ -34,7 +34,7 @@
 
             <Label Margin="10"
                    Text="{Binding BookmarkedCount, StringFormat='Vous avez {0} contacts en favoris'}"
-                   TextColor="Teal"
+                   TextColor="{StaticResource PrimaryColor}"
                    />
 
             <CollectionView ItemsSource="{Binding Contacts}">
@@ -51,7 +51,7 @@
                             <Frame Padding="10,5"
                                    CornerRadius="5"
                                    IsClippedToBounds="True"
-                                   BackgroundColor="Teal"
+                                   BackgroundColor="{StaticResource PrimaryColor}"
                                    >
 
                                 <Grid ColumnSpacing="10"
@@ -64,7 +64,7 @@
                                                              ImageSize="64"
                                                              MainImageSource="{Binding PhotoUrl}"
                                                              PlaceholderImageSource="{Binding PlaceholderImage, Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={Type vm:MainViewModel}}}"
-                                                             BorderColor="YellowGreen"
+                                                             BorderColor="{StaticResource SecondaryVariantColor}"
                                                              BorderThickness="4"
                                                              ShowBorder="{Binding IsBookmarked}"
                                                              InputTransparent="True"
@@ -74,24 +74,26 @@
                                     <Label Grid.Row="0"
                                            Grid.Column="1"
                                            Text="{Binding Name}"
-                                           TextColor="White"
+                                           TextColor="{StaticResource BackgroundColor}"
                                            TextTransform="Uppercase"
                                            FontSize="Large"
+                                           FontAttributes="Bold"
                                            VerticalOptions="End"
                                            />
 
                                     <Label Grid.Row="1"
                                            Grid.Column="1"
                                            Text="{Binding Email}"
-                                           TextColor="White"
+                                           TextColor="{StaticResource BackgroundColor}"
+                                           FontSize="Medium"
                                            VerticalOptions="Center"
                                            />
 
                                     <Label Grid.Row="2"
                                            Grid.Column="1"
                                            Text="{Binding Comment}"
-                                           TextColor="White"
-                                           FontSize="Micro"
+                                           TextColor="{StaticResource BackgroundColor}"
+                                           FontSize="Default"
                                            LineBreakMode="WordWrap"
                                            />
                                 </Grid>
