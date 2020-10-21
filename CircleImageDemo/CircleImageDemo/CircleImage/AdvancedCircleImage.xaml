@@ -21,7 +21,7 @@
                        Source="{Binding PlaceholderImageSource}"
                        />
 
-    <local:CircleImage x:Name="Placeholder"
+    <local:CircleImage x:Name="Image"
                        BindingContext="{x:Reference this}"
                        ImageSize="{Binding ImageSize}"
                        Source="{Binding MainImageSource}"
@@ -31,12 +31,12 @@
              Margin="0"
              BindingContext="{x:Reference this}"
              HorizontalOptions="Center"
+             VerticalOptions="Center"
              Stroke="{Binding BorderColor, Converter={StaticResource ColorToBrushConverter}}"
              StrokeThickness="{Binding BorderThickness}"
-             VerticalOptions="Center"
              HeightRequest="{Binding ImageSize}"
              WidthRequest="{Binding ImageSize}"
-             IsVisible="{Binding ShowBorder}"
+             IsVisible="{Binding ShowBorder}"            
              />
 
     <ActivityIndicator IsRunning="{Binding Source={x:Reference Image}, Path=IsLoading}"
@@ -46,4 +46,5 @@
                        HorizontalOptions="Center"
                        Color="{Binding BorderColor}"
                        />
+
 </Grid>
