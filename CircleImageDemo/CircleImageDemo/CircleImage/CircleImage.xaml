@@ -1,71 +1,28 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Grid x:Name="this"
-      x:Class="CircleImageDemo.CircleImage.CircleImage"
-      xmlns="http://xamarin.com/schemas/2014/forms"
-      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-      xmlns:local="clr-namespace:CircleImageDemo.CircleImage"
-      HorizontalOptions="Center"
-      VerticalOptions="Center"
-      >
+<Image x:Name="this"
+       x:Class="CircleImageDemo.CircleImage.CircleImage"
+       xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:CircleImageDemo.CircleImage;assembly=CircleImageDemo"
+       Aspect="AspectFit"
+       HorizontalOptions="Center"
+       VerticalOptions="Center"
+       BindingContext="{x:Reference this}"
+       HeightRequest="{Binding ImageSize}"
+       WidthRequest="{Binding ImageSize}"
+       >
+    <Image.Resources>
+        <ResourceDictionary>
+            <local:DoubleDividerConverter x:Key="DoubleDividerConverter" Divider="2" />
+            <local:ImageSizeToCenterConverter x:Key="ImageSizeToCenterConverter" />
+        </ResourceDictionary>
+    </Image.Resources>
 
-    <Grid.Resources>
-        <local:ColorToBrushConverter x:Key="ColorToBrushConverter" />
-        <local:DoubleDividerConverter x:Key="DoubleDividerConverter" Divider="2" />
-        <local:ImageSizeToCenterConverter x:Key="ImageSizeToCenterConverter" />
-
-    </Grid.Resources>
-
-    <Image x:Name="Placeholder"
-           Aspect="AspectFit"
-           HorizontalOptions="Center"
-           BindingContext="{x:Reference this}"
-           Source="{Binding PlaceholderImageSource}"
-           HeightRequest="{Binding ImageSize}"
-           WidthRequest="{Binding ImageSize}"
-           >
-        <Image.Clip>
-            <EllipseGeometry BindingContext="{x:Reference this}"
-                             RadiusX="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
-                             RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
-                             Center="{Binding ImageSize, Converter={StaticResource ImageSizeToCenterConverter}}"
-                             />
-        </Image.Clip>
-    </Image>
-
-    <Image x:Name="Image"
-           Aspect="AspectFit"
-           HorizontalOptions="Center"
-           BindingContext="{x:Reference this}"
-           Source="{Binding MainImageSource}"
-           HeightRequest="{Binding ImageSize}"
-           WidthRequest="{Binding ImageSize}"
-           >
-        <Image.Clip>
-            <EllipseGeometry BindingContext="{x:Reference this}"
-                             RadiusX="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
-                             RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
-                             Center="{Binding ImageSize, Converter={StaticResource ImageSizeToCenterConverter}}"
-                             />
-        </Image.Clip>
-    </Image>
-
-    <Ellipse x:Name="Border"
-             Margin="0"
-             BindingContext="{x:Reference this}"
-             HorizontalOptions="Center"
-             Stroke="{Binding BorderColor, Converter={StaticResource ColorToBrushConverter}}"
-             StrokeThickness="{Binding BorderThickness}"
-             VerticalOptions="Center"
-             HeightRequest="{Binding ImageSize}"
-             WidthRequest="{Binding ImageSize}"
-             IsVisible="{Binding ShowBorder}"
-             />
-
-    <ActivityIndicator IsRunning="{Binding Source={x:Reference Image}, Path=IsLoading}"
-                       BindingContext="{x:Reference this}"
-                       IsVisible="{Binding ShowLoader}"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"
-                       Color="{Binding BorderColor}"
-                       />
-</Grid>
+    <Image.Clip>
+        <EllipseGeometry BindingContext="{x:Reference this}"
+                         RadiusX="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
+                         RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
+                         Center="{Binding ImageSize, Converter={StaticResource ImageSizeToCenterConverter}}"
+                         />
+    </Image.Clip>
+</Image>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid x:Name="this"
+      x:Class="CircleImageDemo.CircleImage.AdvancedCircleImage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:local="clr-namespace:CircleImageDemo.CircleImage"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"
+      >
+
+    <Grid.Resources>
+        <local:ColorToBrushConverter x:Key="ColorToBrushConverter" />
+        <local:DoubleDividerConverter x:Key="DoubleDividerConverter" Divider="2" />
+        <local:ImageSizeToCenterConverter x:Key="ImageSizeToCenterConverter" />
+
+    </Grid.Resources>
+
+    <local:CircleImage x:Name="Placeholder"
+                       BindingContext="{x:Reference this}"
+                       ImageSize="{Binding ImageSize}"
+                       Source="{Binding PlaceholderImageSource}"
+                       />
+
+    <local:CircleImage x:Name="Placeholder"
+                       BindingContext="{x:Reference this}"
+                       ImageSize="{Binding ImageSize}"
+                       Source="{Binding MainImageSource}"
+                       />
+
+    <Ellipse x:Name="Border"
+             Margin="0"
+             BindingContext="{x:Reference this}"
+             HorizontalOptions="Center"
+             Stroke="{Binding BorderColor, Converter={StaticResource ColorToBrushConverter}}"
+             StrokeThickness="{Binding BorderThickness}"
+             VerticalOptions="Center"
+             HeightRequest="{Binding ImageSize}"
+             WidthRequest="{Binding ImageSize}"
+             IsVisible="{Binding ShowBorder}"
+             />
+
+    <ActivityIndicator IsRunning="{Binding Source={x:Reference Image}, Path=IsLoading}"
+                       BindingContext="{x:Reference this}"
+                       IsVisible="{Binding ShowLoader}"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Color="{Binding BorderColor}"
+                       />
+</Grid>

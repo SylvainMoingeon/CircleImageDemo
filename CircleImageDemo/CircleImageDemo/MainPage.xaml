@@ -59,17 +59,17 @@
                                       ColumnDefinitions="64,*"
                                       RowDefinitions="32,32"
                                       >
-                                    <circleimage:CircleImage Grid.RowSpan="3"
-                                                             Grid.Column="0"
-                                                             ImageSize="64"
-                                                             MainImageSource="{Binding PhotoUrl}"
-                                                             PlaceholderImageSource="{Binding PlaceholderImage, Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={Type vm:MainViewModel}}}"
-                                                             BorderColor="{StaticResource SecondaryVariantColor}"
-                                                             BorderThickness="4"
-                                                             ShowBorder="{Binding IsBookmarked}"
-                                                             InputTransparent="True"
-                                                             ShowLoader="True"
-                                                             />
+                                    <circleimage:AdvancedCircleImage Grid.RowSpan="3"
+                                                                     Grid.Column="0"
+                                                                     ImageSize="64"
+                                                                     MainImageSource="{Binding PhotoUrl}"
+                                                                     PlaceholderImageSource="{Binding PlaceholderImage, Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={Type vm:MainViewModel}}}"
+                                                                     BorderColor="{StaticResource SecondaryVariantColor}"
+                                                                     BorderThickness="4"
+                                                                     ShowBorder="{Binding IsBookmarked}"
+                                                                     InputTransparent="True"
+                                                                     ShowLoader="True"
+                                                                     />
 
                                     <Label Grid.Row="0"
                                            Grid.Column="1"
