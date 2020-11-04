@@ -36,72 +36,75 @@
                    Text="{Binding BookmarkedCount, StringFormat='Vous avez {0} contacts en favoris'}"
                    TextColor="{StaticResource PrimaryColor}"
                    />
+            <ScrollView>
 
-            <CollectionView ItemsSource="{Binding Contacts}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="{x:Type models:Contact}">
-                        <Grid Padding="10,3">
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1"
-                                                      Command="{Binding SwitchBookmarkCommand, Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Converter={StaticResource DebugConverter}}"
-                                                      CommandParameter="{Binding Converter={StaticResource DebugConverter}}"
-                                                      />
-                            </Grid.GestureRecognizers>
+                <StackLayout Spacing="0" BindableLayout.ItemsSource="{Binding Contacts}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type models:Contact}">
+                            <Grid Padding="10,3">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                          Command="{Binding SwitchBookmarkCommand, Source={RelativeSource AncestorType={x:Type vm:MainViewModel}}, Converter={StaticResource DebugConverter}}"
+                                                          CommandParameter="{Binding Converter={StaticResource DebugConverter}}"
+                                                          />
+                                </Grid.GestureRecognizers>
 
-                            <Frame Padding="10,5"
-                                   CornerRadius="5"
-                                   IsClippedToBounds="True"
-                                   BackgroundColor="{StaticResource PrimaryColor}"
-                                   >
+                                <Frame Padding="10,5"
+                                       CornerRadius="5"
+                                       IsClippedToBounds="True"
+                                       HasShadow="False"
+                                       BackgroundColor="{StaticResource PrimaryColor}"
+                                       >
+                                    <Grid ColumnSpacing="10"
+                                          RowSpacing="0"
+                                          ColumnDefinitions="64,*"
+                                          RowDefinitions="32,24,Auto"
+                                          >
+                                        <circleimage:AdvancedCircleImage Grid.RowSpan="3"
+                                                                         Grid.Column="0"
+                                                                         ImageSize="64"
+                                                                         MainImageSource="{Binding PhotoUrl}"
+                                                                         PlaceholderImageSource="{Binding PlaceholderImage, Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={Type vm:MainViewModel}}}"
+                                                                         BorderColor="{StaticResource SecondaryVariantColor}"
+                                                                         BorderThickness="4"
+                                                                         ShowBorder="{Binding IsBookmarked}"
+                                                                         InputTransparent="True"
+                                                                         ShowLoader="True"
+                                                                         />
 
-                                <Grid ColumnSpacing="10"
-                                      RowSpacing="0"
-                                      ColumnDefinitions="64,*"
-                                      RowDefinitions="32,32"
-                                      >
-                                    <circleimage:AdvancedCircleImage Grid.RowSpan="3"
-                                                                     Grid.Column="0"
-                                                                     ImageSize="64"
-                                                                     MainImageSource="{Binding PhotoUrl}"
-                                                                     PlaceholderImageSource="{Binding PlaceholderImage, Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={Type vm:MainViewModel}}}"
-                                                                     BorderColor="{StaticResource SecondaryVariantColor}"
-                                                                     BorderThickness="4"
-                                                                     ShowBorder="{Binding IsBookmarked}"
-                                                                     InputTransparent="True"
-                                                                     ShowLoader="True"
-                                                                     />
+                                        <Label Grid.Row="0"
+                                               Grid.Column="1"
+                                               Text="{Binding Name}"
+                                               TextColor="{StaticResource BackgroundColor}"
+                                               TextTransform="Uppercase"
+                                               FontSize="Large"
+                                               FontAttributes="Bold"
+                                               VerticalOptions="End"
+                                               />
 
-                                    <Label Grid.Row="0"
-                                           Grid.Column="1"
-                                           Text="{Binding Name}"
-                                           TextColor="{StaticResource BackgroundColor}"
-                                           TextTransform="Uppercase"
-                                           FontSize="Large"
-                                           FontAttributes="Bold"
-                                           VerticalOptions="End"
-                                           />
+                                        <Label Grid.Row="1"
+                                               Grid.Column="1"
+                                               VerticalOptions="Start"
+                                               Text="{Binding Email}"
+                                               TextColor="{StaticResource BackgroundColor}"
+                                               FontSize="Medium"
+                                               />
 
-                                    <Label Grid.Row="1"
-                                           Grid.Column="1"
-                                           Text="{Binding Email}"
-                                           TextColor="{StaticResource BackgroundColor}"
-                                           FontSize="Medium"
-                                           VerticalOptions="Center"
-                                           />
+                                        <Label Grid.Row="2"
+                                               Grid.Column="1"
+                                               Text="{Binding Comment}"
+                                               TextColor="{StaticResource BackgroundColor}"
+                                               FontSize="Default"
+                                               />
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
 
-                                    <Label Grid.Row="2"
-                                           Grid.Column="1"
-                                           Text="{Binding Comment}"
-                                           TextColor="{StaticResource BackgroundColor}"
-                                           FontSize="Default"
-                                           LineBreakMode="WordWrap"
-                                           />
-                                </Grid>
-                            </Frame>
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                </StackLayout>
+            </ScrollView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
