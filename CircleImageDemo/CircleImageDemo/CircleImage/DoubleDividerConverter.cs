@@ -7,9 +7,7 @@ using Xamarin.Forms;
 namespace CircleImageDemo.CircleImage
 {
     public class DoubleDividerConverter : IValueConverter
-    {
-        public readonly static DoubleDividerConverter Instance = new DoubleDividerConverter();
-
+    {      
         public int Divider { get; set; } = 1;
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
