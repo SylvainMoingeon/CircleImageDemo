@@ -12,7 +12,6 @@
         <local:ColorToBrushConverter x:Key="ColorToBrushConverter" />
         <local:DoubleDividerConverter x:Key="DoubleDividerConverter" Divider="2" />
         <local:ImageSizeToCenterConverter x:Key="ImageSizeToCenterConverter" />
-
     </Grid.Resources>
 
     <local:CircleImage x:Name="Placeholder"
@@ -36,12 +35,12 @@
              StrokeThickness="{Binding BorderThickness}"
              HeightRequest="{Binding ImageSize}"
              WidthRequest="{Binding ImageSize}"
-             IsVisible="{Binding ShowBorder}"            
+             IsVisible="{Binding IsBorderVisible}"
              />
 
     <ActivityIndicator IsRunning="{Binding Source={x:Reference Image}, Path=IsLoading}"
                        BindingContext="{x:Reference this}"
-                       IsVisible="{Binding ShowLoader}"
+                       IsVisible="{Binding IsLoaderEnabled}"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"
                        Color="{Binding BorderColor}"

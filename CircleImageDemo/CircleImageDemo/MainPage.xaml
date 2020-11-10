@@ -67,9 +67,9 @@
                                                                          PlaceholderImageSource="{Binding PlaceholderImage, Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={Type vm:MainViewModel}}}"
                                                                          BorderColor="{StaticResource SecondaryVariantColor}"
                                                                          BorderThickness="4"
-                                                                         ShowBorder="{Binding IsBookmarked}"
+                                                                         IsBorderVisible="{Binding IsBookmarked}"
                                                                          InputTransparent="True"
-                                                                         ShowLoader="True"
+                                                                         IsLoaderEnabled="True"
                                                                          />
 
                                         <Label Grid.Row="0"

@@ -116,11 +116,11 @@ namespace CircleImageDemo.CircleImage
         }
         #endregion
 
-        #region ShowBorder
+        #region IsBorderVisible
         // Bindable property
-        public static readonly BindableProperty ShowBorderProperty =
+        public static readonly BindableProperty IsBorderVisibleProperty =
           BindableProperty.Create(
-             propertyName: nameof(ShowBorder),
+             propertyName: nameof(IsBorderVisible),
              declaringType: typeof(AdvancedCircleImage),
              returnType: typeof(bool),
              defaultValue: false,
@@ -130,18 +130,18 @@ namespace CircleImageDemo.CircleImage
 
 
         // Gets or sets value of this BindableProperty
-        public bool ShowBorder
+        public bool IsBorderVisible
         {
-            get => (bool)GetValue(ShowBorderProperty);
-            set => SetValue(ShowBorderProperty, value);
+            get => (bool)GetValue(IsBorderVisibleProperty);
+            set => SetValue(IsBorderVisibleProperty, value);
         }
         #endregion
 
         #region ShowLoader
         // Bindable property
-        public static readonly BindableProperty ShowLoaderProperty =
+        public static readonly BindableProperty IsLoaderEnabledProperty =
           BindableProperty.Create(
-             propertyName: nameof(ShowLoader),
+             propertyName: nameof(IsLoaderEnabled),
              declaringType: typeof(AdvancedCircleImage),
              returnType: typeof(bool),
              defaultValue: false,
@@ -151,10 +151,10 @@ namespace CircleImageDemo.CircleImage
 
 
         // Gets or sets value of this BindableProperty
-        public bool ShowLoader
+        public bool IsLoaderEnabled
         {
-            get => (bool)GetValue(ShowLoaderProperty);
-            set => SetValue(ShowLoaderProperty, value);
+            get => (bool)GetValue(IsLoaderEnabledProperty);
+            set => SetValue(IsLoaderEnabledProperty, value);
         }
         #endregion
     }
