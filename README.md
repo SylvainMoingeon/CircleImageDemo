@@ -16,8 +16,9 @@ https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-p
 
 ## Partie 2
 
-(en cours de rédaction)
+https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-2/
 
 * Créer un contrôle réutilisable et compatible MVVM :
   * Définir des propriétés bindables (BindableProperty)
   * Utiliser les Converters
+  * Et quelques autres astuces ;-)
